@@ -41,7 +41,10 @@ export class StudentformComponent implements OnInit {
         Validators.required,
         Validators.pattern(CustomRegex.email),
       ]),
-      contact: new FormControl('', [Validators.required]),
+      contact: new FormControl('', [
+        Validators.required,
+        Validators.pattern(CustomRegex.contact),
+      ]),
     });
   }
 

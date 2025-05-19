@@ -65,6 +65,13 @@
         <div *ngIf="f['contact'].touched && f['contact'].hasError('required')">
           <p class="text-danger">Contact is required</p>
         </div>
+
+        <div *ngIf="f['contact'].dirty && f['contact'].hasError('pattern')">
+          <p class="text-danger">
+            Invalid Pattern : A 10-digit mobile number starting with digits 6
+            through 9
+          </p>
+        </div>
       </div>
 
       <button class="btn btn-sm btn-primary">
