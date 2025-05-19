@@ -1,0 +1,50 @@
+<ng-container *ngIf="studentArr.length > 0; else noStudent">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Sr.No</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Edit</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let std of studentArr; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ std.fname | titlecase }}</td>
+        <td>{{ std.lname | titlecase }}</td>
+        <td>{{ std.email }}</td>
+        <td>{{ std.contact }}</td>
+        <td>
+          <button
+            mat-icon-button
+            class="iconn"
+            color="warn"
+            aria-label="Edit"
+            (click)="onEdit(std)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+        <td>
+          <button
+            mat-icon-button
+            class="iconn"
+            color="primary"
+            aria-label="delete"
+            (click)="onDelete(std)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #noStudent>
+  <p class="alert alert-info">No Student Data Available</p>
+</ng-template>

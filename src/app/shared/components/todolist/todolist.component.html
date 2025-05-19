@@ -1,0 +1,44 @@
+<ng-container *ngIf="todoArr.length > 0; else notodo">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Sr.No</th>
+        <th>Todo Name</th>
+        <th>Edit</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todoArr; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ todo.todoname | titlecase }}</td>
+        <td>
+          <button
+            mat-icon-button
+            class="iconn"
+            color="warn"
+            aria-label="Edit"
+            (click)="onEdit(todo)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+        <td>
+          <button
+            mat-icon-button
+            class="iconn"
+            color="primary"
+            aria-label="delete"
+            (click)="onDelete(todo)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #notodo>
+  <p class="alert alert-success" role="alert">No Todo data Available</p>
+</ng-template>

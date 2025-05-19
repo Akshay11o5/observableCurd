@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="todoForm" (ngSubmit)="onTodoSubmit()">
+      <div class="form-group">
+        <label for="todoname">Todo Name</label>
+        <input
+          type="text"
+          id="todoname"
+          formControlName="todoname"
+          class="form-control"
+        />
+
+        <div
+          *ngIf="f['todoname'].touched && f['todoname'].hasError('required')"
+        >
+          <p class="text-danger">Todo name is required</p>
+        </div>
+        <div *ngIf="f['todoname'].dirty && f['todoname'].hasError('pattern')">
+          <p class="text-danger">Invalid Pattern, only Alphabets are allowed</p>
+        </div>
+      </div>
+      <button *ngIf="!Isineditmode" class="btn btn-primary">Add Todo</button>
+      <button *ngIf="Isineditmode" class="btn btn-primary">Update</button>
+    </form>
+  </div>
+</div>
